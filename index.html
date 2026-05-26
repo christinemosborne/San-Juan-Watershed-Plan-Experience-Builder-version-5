@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Layout</title>
+    <style>
+        /* Your CSS starts here */
+        :root {
+          --bg-main: #f7f3ee;
+          --panel-bg: #ffffff;
+          --accent: #d97338;
+          --accent-soft: #fbe3cf;
+          --accent-dark: #9a4c1f;
+          --primary: #1a6f8f;
+          --primary-soft: #e1f0f5;
+          --text-main: #123047;
+          --text-muted: #5f6b7a;
+          --border-subtle: #e0d6cc;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+          margin: 0;
+          font-family: system-ui, -apple-system, sans-serif;
+          background-color: var(--bg-main);
+          color: var(--text-main);
+        }
+
+        .app-shell { display: flex; flex-direction: column; min-height: 100vh; }
+
+        .header {
+          background: linear-gradient(90deg, #f8f4ef, #e7f1f5);
+          border-bottom: 1px solid var(--border-subtle);
+          padding: 16px 24px;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          gap: 16px;
+        }
+
+        .header-main { font-size: 20px; font-weight: 650; }
+        .header-sub { font-size: 13px; color: var(--text-muted); }
+
+        .main {
+          display: grid;
+          grid-template-columns: 320px minmax(0, 1.35fr) 360px;
+          gap: 16px;
+          padding: 16px 24px 24px;
+        }
+
+        .panel {
+          background-color: var(--panel-bg);
+          border-radius: 10px;
+          box-shadow: 0 8px 20px rgba(15, 23, 42, 0.06);
+          border: 1px solid var(--border-subtle);
+          display: flex;
+          flex-direction: column;
+          overflow: hidden;
+        }
+
+        .nav-panel { padding: 16px 14px 18px; }
+        .nav-item {
+          display: flex;
+          align-items: center;
+          gap: 12px;
+          padding: 12px;
+          border-radius: 12px;
+          border: 1px solid #d7e4ea;
+          background-color: var(--primary-soft);
+          margin-bottom: 10px;
+          cursor: pointer;
+        }
+
+        .map-container {
+          position: relative;
+          flex: 1;
+          min-height: 400px;
+          background: linear-gradient(180deg, #b9dae9, #77afc8);
+        }
+
+        .share-panel {
+          padding: 16px 18px;
+          background: radial-gradient(circle at top left, var(--accent-soft), #fff);
+          border-left: 4px solid var(--accent);
+        }
+
+        .share-button-main {
+          padding: 10px 16px;
+          border-radius: 999px;
+          border: none;
+          background: var(--accent);
+          color: white;
+          font-weight: 700;
+          cursor: pointer;
+        }
+
+        /* Responsive rules included from your code */
+        @media (max-width: 1100px) {
+          .main { grid-template-columns: 280px minmax(0, 1fr); }
+        }
+        @media (max-width: 800px) {
+          .main { grid-template-columns: minmax(0, 1fr); }
+        }
+    </style>
+</head>
+<body>
+
+<div class="app-shell">
+    <header class="header">
+        <div class="header-title">
+            <span class="header-eyebrow">Project Alpha</span>
+            <div class="header-main">Community Mapping Tool</div>
+            <div class="header-sub">Help us identify key areas for improvement in your local neighborhood.</div>
+        </div>
+        <div class="header-actions">
+            <div class="header-pill">v1.2 Active</div>
+        </div>
+    </header>
+
+    <main class="main">
+        <aside class="panel nav-panel">
+            <div class="nav-header">Explorer</div>
+            <div class="nav-subtitle">Select a category below</div>
+            <div class="nav-list">
+                <div class="nav-item">
+                    <div class="nav-icon">📍</div>
+                    <div>
+                        <div class="nav-text-main">Public Parks</div>
+                        <div class="nav-text-sub">Green spaces and trails</div>
+                    </div>
+                </div>
+                <div class="nav-item secondary">
+                    <div class="nav-icon">🚲</div>
+                    <div>
+                        <div class="nav-text-main">Transit</div>
+                        <div class="nav-text-sub">Bus and bike routes</div>
+                    </div>
+                </div>
+            </div>
+            <div class="nav-cta">
+                <button>Download Report</button>
+            </div>
+        </aside>
+
+        <section class="panel map-panel">
+            <div class="map-toolbar">
+                <div class="map-toolbar-left">
+                    <span class="map-toolbar-badge">Live View</span>
+                    <span>Downtown District</span>
+                </div>
+            </div>
+            <div class="map-container">
+                <div class="map-placeholder">Map Interface Loading...</div>
+                <div class="map-controls">
+                    <button class="map-control-btn">+</button>
+                    <button class="map-control-btn">−</button>
+                </div>
+            </div>
+        </section>
+
+        <aside class="panel share-panel">
+            <div class="share-label">Contribute</div>
+            <div class="share-title">Share Your Input</div>
+            <p class="share-sub">Your feedback is anonymous and helps guide city planning.</p>
+            <div class="share-highlight">Pro-tip: Be specific about locations!</div>
+            <form class="share-form">
+                <label>Observations</label>
+                <textarea placeholder="Describe what you see here..."></textarea>
+                <div class="share-actions">
+                    <button type="button" class="share-button-main">Submit Feedback</button>
+                    <span class="share-note">By submitting, you agree to our terms.</span>
+                </div>
+            </form>
+        </aside>
+    </main>
+
+    <footer class="footer">
+        &copy; 2024 Urban Planning Initiative. All rights reserved.
+    </footer>
+</div>
+
+</body>
+</html>
